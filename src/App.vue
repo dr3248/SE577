@@ -16,7 +16,7 @@ import ThirdPage from './pages/Login.vue'
     <!-- <nav> -->
     <!-- <div class="container-fluid"> -->
     <div class="navbar navbar-expand-md navbar-dark">
-        <RouterLink to="/home"><img  class="logo" src="../public/axolotl2.jpg" alt=""></RouterLink>
+        <RouterLink to="/home"><img  class="logo" src="../public/earth.png" alt=""></RouterLink>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
