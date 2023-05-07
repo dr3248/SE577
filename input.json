@@ -1,0 +1,12 @@
+[
+   {
+       "destination": "Africa",
+       "duration": "4days",
+       "price": "$500"
+   },
+   {
+       "destination": "Asia",
+       "duration": "10days",
+       "price": "$300"
+   }
+]
