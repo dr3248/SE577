@@ -8,5 +8,10 @@
        "destination": "Asia",
        "duration": "10days",
        "price": "$300"
+   },
+   {
+       "destination": "Europe",
+       "duration": "5days",
+       "price": "$800"
    }
 ]
