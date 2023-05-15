@@ -19,6 +19,8 @@
   <br>
   <p>The number of results is {{ tripData.length }}</p>
    
+
+
 </template>
   
 <script lang="ts">

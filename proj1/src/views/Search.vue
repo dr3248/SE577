@@ -21,9 +21,9 @@
     <p class="happy-text">Found trip to: {{ tripDest }}</p>
     <p>
       <!-- note the ?. notation, given studentData may be undefined if we dont find one -->
-      Student ID: {{ tripData?.destination }} <br/>
-      Student Name: {{ tripData?.duration }} <br/>
-      Course ID: {{ tripData?.price}} <br/>
+      Destination: {{ tripData?.destination }} <br/>
+      Duration: {{ tripData?.duration }} <br/>
+      Price: {{ tripData?.price}} <br/>
     </p>
   </div>
   
