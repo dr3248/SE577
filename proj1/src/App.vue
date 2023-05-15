@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import Africa from './pages/Trips.vue'
-import America from './pages/America.vue'
-import Asia from './pages/Asia.vue'
-import Europe from './pages/Europe.vue'
-import Oceania from './pages/Oceania.vue'
+// import America from './pages/America.vue'
+// import Asia from './pages/Asia.vue'
+// import Europe from './pages/Europe.vue'
+// import Oceania from './pages/Oceania.vue'
 import ThirdPage from './pages/Login.vue'
-
 </script>
 
 <template>
@@ -40,7 +39,7 @@ import ThirdPage from './pages/Login.vue'
             <!-- </li> -->
 
             <li class="nav-item"><RouterLink class="nav-link" to="/about">About us</RouterLink></li>
-            <li class="nav-item"><RouterLink class="nav-link" to="/maps">Maps</RouterLink></li>
+            <li class="nav-item"><RouterLink class="nav-link" to="/search">Search</RouterLink></li>
           </ul>
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><RouterLink class="nav-link account" to="/login">LogIn</RouterLink></li>
@@ -52,6 +51,7 @@ import ThirdPage from './pages/Login.vue'
 
   <RouterView />
 </template>
+
 
 <style scoped>
 header {
