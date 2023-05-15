@@ -44,9 +44,9 @@ const router = createRouter({
       // component: () => import('../pages/Oceania.vue')
     // },
     {
-      path: '/maps',
-      name: 'Maps',
-      component: () => import('../views/Maps.vue')
+      path: '/search',
+      name: 'Search',
+      component: () => import('../views/Search.vue')
     },
     {
       path: '/login',

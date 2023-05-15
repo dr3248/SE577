@@ -33,6 +33,7 @@ app.get("/trips", (req, res) => {
         }
     } else if (dest) {
         const trip = respObj.find(element => element.destination == dest);
+        console.log(trip)
         if (trip == undefined) {
             res.status(404).send("Trip not found!")
         } else {

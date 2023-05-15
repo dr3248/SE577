@@ -4,10 +4,16 @@ You need to do this inside the project folder:
 node init
 
 npm install express
+npm install cors
 
-run:
+
+run app:
 
 nodemon ./app.js
+
+run Front End:
+
+yarn dev
 
 
 Things you can try to run in localhost:3000:
