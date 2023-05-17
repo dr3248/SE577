@@ -7,8 +7,8 @@ You need to do these inside the server folder:
 
 npm init
 
-npm install express
-npm install cors
+npm install express  
+npm install cors  
 
 2. Then run the app with the following command:
 
@@ -18,7 +18,7 @@ nodemon ./app.js
 CLIENT: 
 In a new terminal, go the client directory and type the following commands to run the Front End:
 
-yarn
+yarn  
 yarn dev
 
 FRONT END:
