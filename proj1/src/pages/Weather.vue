@@ -22,6 +22,12 @@
       <h3>The weather is currently {{tripData?.desc}} </h3>
       <!-- <img src ='{{ tripData?.imgUrl }}'>  -->
   </div>
+
+  <!-- Additions  -->
+
+  <div v-else-if="tripData === undefined && !queryIsDirty">
+  <h1>No temperature or weather found for {{ tripDest }}.</h1>
+  </div>
   
 
   <div v-if="apiErrorInfo.isError && !queryIsDirty">

@@ -62,6 +62,13 @@ app.get("/weather", (req, res) => {
     https.get(url, (response)=> {
         console.log(response.statusCode);
 
+        // Additions
+
+        if (response.statusCode !== 200) {
+            res.status(response.statusCode).send("Error fetching weather data");
+            return;
+        }
+
         response.on("data", (data) => {
             const weatherdata = JSON.parse(data);
             // console.log(weatherdata)
@@ -71,6 +78,8 @@ app.get("/weather", (req, res) => {
             const imgUrl = "https://openweathermap.org/img/wn/"+ icon +"@2x.png"
             console.log(temp);
             console.log(desc);
+            console.log(icon);
+            console.log(imgUrl);
             res_data = {
                 'temp': temp,
                 'desc': desc,
