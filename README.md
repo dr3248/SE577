@@ -8,7 +8,9 @@ Architecture:
 
 
 
-The architecture diagram shows the different containers and components of our SPA. It has these different routes, and each one displays different information, like the Home page, About us page and so on. The TRIPS page displays the json data, the SEARCH page can be used to search for a particular trip and then display the results as per the fetch query. The TRIPS and SEARCH page make use of raw data to display results. 
+The architecture diagram shows the different containers and components of our SPA. It shows a basic diagram of the user with the system, and then a detailed structure:
+
+It has these different routes, and each one displays different information, like the Home page, About us page and so on. The TRIPS page displays the json data, the SEARCH page can be used to search for a particular trip and then display the results as per the fetch query. The TRIPS and SEARCH page make use of raw data to display results. 
 
 For the Weather Page, using the OpenWeatherMap API, based on the client request, the information i.e. the place name is processed and then in response, we receive the temperture and weather for that place. 
 
