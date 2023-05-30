@@ -29,7 +29,9 @@ If a random/garbage value is entered, it would display an error message.
 
 Architecture:  
 
-![del4-diagram](https://github.com/dr3248/SE577/assets/55326813/cf5dc9c0-f358-48d8-ba30-f34030e93013)
+<!-- ![del4-diagram](https://github.com/dr3248/SE577/assets/55326813/cf5dc9c0-f358-48d8-ba30-f34030e93013)
+ -->
+![del5](https://github.com/dr3248/SE577/assets/55326813/b527da2a-33ca-47de-a612-20f31ab1611e)
 
 
 
