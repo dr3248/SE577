@@ -41,6 +41,7 @@ import ThirdPage from './pages/Login.vue'
             <li class="nav-item"><RouterLink class="nav-link" to="/about">About us</RouterLink></li>
             <li class="nav-item"><RouterLink class="nav-link" to="/weather">Weather</RouterLink></li>
             <li class="nav-item"><RouterLink class="nav-link" to="/search">Search</RouterLink></li>
+            <li class="nav-item"><RouterLink class="nav-link" to="/booked-trips">Booked Trips</RouterLink></li>
           </ul>
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><RouterLink class="nav-link account" to="/login">LogIn</RouterLink></li>

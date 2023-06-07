@@ -57,6 +57,21 @@ const router = createRouter({
       path: '/login',
       name: 'login_page',
       component: () => import('../pages/Login.vue')
+    },
+    // {
+    //   path: '/booked-trips',
+    //   name: 'booked_trips',
+    //   component: () => import('../views/BookedTrips.vue')
+    // }
+    { path: '/trips', 
+    name: 'Trips',
+    component: () => import('../pages/Trips.vue')
+    },
+  
+    {
+      path: '/booked-trips',
+      name: 'BookedTrips',
+      component: () => import('../views/BookedTrips.vue')
     }
   ]
 })

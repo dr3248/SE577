@@ -91,6 +91,73 @@ app.get("/weather", (req, res) => {
     });
 });
 
+
+// app.post("/login", (req, res) => {
+//     const { email, password } = req.body;
+  
+//     // Check if the entered email and password match the stored credentials
+//     const storedEmail = localStorage.getItem("email");
+//     const storedPassword = localStorage.getItem("password");
+  
+//     if (email === storedEmail && password === storedPassword) {
+//       res.status(200).json({ message: "Login successful" });
+//     } else {
+//       res.status(401).json({ message: "Invalid email or password" });
+//     }
+//   });
+
+// const { OAuth2Client } = require('google-auth-library');
+// const client = new OAuth2Client('530316403367-rps07n9reu3b2ot08a5gaupgs5m2f2m4.apps.googleusercontent.com'); 
+
+//   app.post('/google-login', async (req, res) => {
+//     const { token } = req.body;
+  
+//     try {
+//       const ticket = await client.verifyIdToken({
+//         idToken: token,
+//         audience: '530316403367-rps07n9reu3b2ot08a5gaupgs5m2f2m4.apps.googleusercontent.com', 
+  
+//       const { email } = ticket.getPayload();
+    
+//       res.status(200).json({ message: 'Login successful' });
+//     } catch (error) {
+//       console.error(error);
+//       res.status(401).json({ message: 'Invalid token' });
+//     }
+//   });
+
+
+app.get("/booked-trips", (req, res) => {
+    console.log("TRIIIIPS")
+    var data = fs.readFileSync('input.json', 'utf-8', (err) => {
+        if (err) throw err;
+    });
+    // console.log(data);
+    const respObj = JSON.parse(data);
+    const {id, dest} = req.query;
+    console.log(dest)
+    if(id) {
+        if(id === undefined) {
+            res.send(respObj);
+        } else if (respObj[id] == undefined) {
+            res.status(404).send("Trip not found!")
+        } else {
+            res.send(respObj[id]);
+        }
+    } else if (dest) {
+        const trip = respObj.find(element => element.destination == dest);
+        // console.log(trip)
+        if (trip == undefined) {
+            res.status(404).send("Trip not found!")
+        } else {
+            res.send(trip);
+        }
+    } else {
+        res.send(respObj);
+    }
+
+});
+
 app.listen(3000, (req, res) => {
     console.log("Server on port 3000");
 });
