@@ -158,6 +158,43 @@ app.get("/booked-trips", (req, res) => {
 
 });
 
+
+// app.get("/about", (req, res) => {
+//     const key = "530316403367-rps07n9reu3b2ot08a5gaupgs5m2f2m4.apps.googleusercontent.com";
+//     const url = "https://accounts.google.com/gsi/select?client_id=" + key + "&ux_mode=popup&ui_mode=bottom_sheet&as=HSeP1TA3FVhTKkhmzQ0r3Q&channel_id=5a728db1612d64a3dbb7ac426ae3e8b0cb7b57d3ca1d9c98c56e4f7d9344b0da&origin=http%3A%2F%2Flocalhost%3A5173";
+   
+//     https.get(url, (response)=> {
+//         console.log(response.statusCode);
+
+//         // Additions for Error
+
+//         if (response.statusCode !== 200) {
+//             res.status(response.statusCode).send("Error fetching weather data");
+//             return;
+//         }
+
+        // response.on("data", (data) => {
+        //     const weatherdata = JSON.parse(data);
+        //     // console.log(weatherdata)
+        //     const temp = weatherdata.main.temp;
+        //     const desc = weatherdata.weather[0].description;
+        //     const icon = weatherdata.weather[0].icon;
+        //     const imgUrl = "https://openweathermap.org/img/wn/"+ icon +"@2x.png"
+        //     console.log(temp);
+        //     console.log(desc);
+        //     console.log(icon);
+        //     console.log(imgUrl);
+        //     res_data = {
+        //         'temp': temp,
+        //         'desc': desc,
+        //         'icon': icon,
+        //         'imgURL': imgUrl
+        //     }
+        //     res.send(res_data)
+//        /// });
+//     });
+// });
+
 app.listen(3000, (req, res) => {
     console.log("Server on port 3000");
 });

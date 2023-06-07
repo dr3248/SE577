@@ -8,6 +8,7 @@
         <p>Price: {{ trip.price }}</p>
         <hr>
       </div>
+      <button class="unbook-button" @click="unbookTrips">Unbook</button>
     </div>
     <div v-else>
       <p>No trips have been booked.</p>
@@ -24,11 +25,23 @@ export default {
     };
   },
   mounted() {
-    this.bookedTrips = this.$route.query.trips ? JSON.parse(this.$route.query.trips) : [];
+    this.bookedTrips = JSON.parse(this.$route.query.trips || '[]');
+  },
+  methods: {
+    unbookTrips() {
+      this.bookedTrips = [];
+    },
   },
 };
 </script>
 
 <style scoped>
-/* Add your styles here */
+.unbook-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
 </style>

@@ -1,63 +1,46 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
-    <button @click='handleSignIn'>Sign-In</button>
-    <button @click='handleSignOut'>Sign-out</button>
+    <h1>This is an about page</h1><br>
+    <button @click="signInWithGoogle">Show my google details</button>
+
+    <div v-if="user">
+      <h2>Welcome, {{ user.displayName }}</h2>
+      <p>Email: {{ user.email }}</p>
+      <p>Profile Picture:</p>
+      <img :src="user.photoURL" alt="Profile Picture">
+    </div>
   </div>
 </template>
 
-<script>
-import { inject } from 'vue';
+<script setup>
+import { ref, onMounted } from 'vue';
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
 
-export default {
-  name: 'AboutView',
-  props: {
-    msg: String
-  },
+const user = ref(null);
 
-  data() {
-    return {
-      user: '',
+const signInWithGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(getAuth(), provider)
+    .then((result) => {
+      user.value = result.user;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
+onMounted(() => {
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in
+      user.value = user;
+    } else {
+      // User is signed out
+      user.value = null;
     }
-  },
-
-  methods: {
-    async handleSignIn() {
-      try {
-        const googleUser = await this.$gAuth.signIn();
-        // console.log(this.$gAuth.signIn);
-
-        if (!googleUser) {
-          return null;
-        }
-
-        this.user = googleUser.getBasicProfile().getEmail();
-      } catch (error) {
-        console.log(error);
-        return null;
-      }
-      
-    },
-    async handleSignOut() {
-      try {
-        await this.$gAuth.signOut();
-        // console.log(this.$gAuth.signOut);
-
-        this.user = '';
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  },
-
-  setup() {
-    const Vue3GoogleOauth = inject('Vue3GoogleOauth');
-
-    return {
-      Vue3GoogleOauth,
-    };
-  }
-}
+  });
+});
 </script>
 
 <style>

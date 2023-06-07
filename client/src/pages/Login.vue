@@ -15,7 +15,6 @@
       <button type="submit">Login</button>
       <button type="button" @click="toggleRegisterForm">New User</button>
     </form>
-    <div id="google-signin"></div> <!-- Add this element for Google Sign-In button -->
 
     <h2 v-if="isNewUser">Register</h2>
     <form v-if="isNewUser" @submit.prevent="register">
@@ -32,117 +31,62 @@
       <button type="submit">Register</button>
       <button type="button" @click="toggleRegisterForm">Back to Login</button>
     </form>
-    <button @click='handleSignIn'>Sign In</button>
-    <button @click='handleSignOut' >Sign Out</button>
   </div>
 </template>
 
-
 <script>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 export default {
-  data() {
-    return {
-      loginEmail: '',
-      loginPassword: '',
-      registerEmail: '',
-      registerPassword: '',
-      isNewUser: false,
-      googleClientId: '530316403367-rps07n9reu3b2ot08a5gaupgs5m2f2m4.apps.googleusercontent.com', // Replace with your actual Client ID
+  setup() {
+    const isNewUser = ref(false);
+    const loginEmail = ref('');
+    const loginPassword = ref('');
+    const registerEmail = ref('');
+    const registerPassword = ref('');
+    const router = useRouter();
+
+    const login = () => {
+      // Check if the entered email and password match the stored credentials
+      const storedEmail = localStorage.getItem('email');
+      const storedPassword = localStorage.getItem('password');
+
+      if (loginEmail.value === storedEmail && loginPassword.value === storedPassword) {
+        alert('Login successful');
+        // Redirect to homepage.vue
+        router.push('/home');
+      } else {
+        alert('Invalid email or password');
+      }
     };
-  },
-  mounted() {
-    this.initializeGoogleSignIn();
-  },
-  methods: {
-    async handleSignIn() {
-      try {
-        const googleUser = await this.$gAuth.signIn();
-        // console.log(this.$gAuth.signIn);
 
-        if (!googleUser) {
-          return null;
-        }
+    const register = () => {
+      // Store the entered email and password as credentials
+      localStorage.setItem('email', registerEmail.value);
+      localStorage.setItem('password', registerPassword.value);
 
-        this.user = googleUser.getBasicProfile().getEmail();
-      } catch (error) {
-        console.log(error);
-        return null;
-      }
-      
-    },
-    async handleSignOut() {
-      try {
-        await this.$gAuth.signOut();
-        // console.log(this.$gAuth.signOut);
-
-        this.user = '';
-      } catch (error) {
-        console.log(error);
-      }
-    },
-
-    initializeGoogleSignIn() {
-      const googleSignInConfig = {
-        client_id: this.googleClientId,
-      };
-
-      // Initialize Google Sign-In
-      window.google.accounts.id.initialize(googleSignInConfig);
-      window.google.accounts.id.renderButton(
-        document.getElementById('google-signin'), // Render the button inside the element with id 'google-signin'
-        {
-          theme: 'filled_black', // Customize the button theme
-          size: 'large', // Customize the button size
-          text: 'Continue with Google', // Customize the button text
-          shape: 'rectangular', // Customize the button shape
-        }
-      );
-
-      window.google.accounts.id.prompt(notification => {
-        if (notification.isNotDisplayed()) {
-          console.log('Google Sign-In prompt not displayed');
-        } else {
-          console.log('Google Sign-In prompt displayed');
-        }
-      });
-    },
-    login() {
-    // Check if the entered email and password match the stored credentials
-    const storedEmail = localStorage.getItem('email');
-    const storedPassword = localStorage.getItem('password');
-
-    if (
-      this.loginEmail === storedEmail &&
-      this.loginPassword === storedPassword
-    ) {
-      alert('Login successful');
+      alert('Registration successful');
+      toggleRegisterForm();
       // Redirect to homepage.vue
-      this.$router.push('/home');
-    } else {
-      alert('Invalid email or password');
-    }
-  },
-  register() {
-    // Store the entered email and password as credentials
-    localStorage.setItem('email', this.registerEmail);
-    localStorage.setItem('password', this.registerPassword);
+      // router.push('/homepage');
+    };
 
-    alert('Registration successful');
-    // Redirect to homepage.vue
-    // this.$router.push('/homepage');
-  },
-  toggleRegisterForm() {
-    this.isNewUser = !this.isNewUser;
-  },
-  },
-  // setup() {
-  //   //const Vue3GoogleOauth = inject('Vue3GoogleOauth');
+    const toggleRegisterForm = () => {
+      isNewUser.value = !isNewUser.value;
+    };
 
-  //   return {
-  //     Vue3GoogleOauth,
-  //   };
-  // }
+    return {
+      isNewUser,
+      loginEmail,
+      loginPassword,
+      registerEmail,
+      registerPassword,
+      login,
+      register,
+      toggleRegisterForm
+    };
+  }
 };
 </script>
 
@@ -160,4 +104,3 @@ button:hover {
   background-color: #0056b3;
 }
 </style>
-

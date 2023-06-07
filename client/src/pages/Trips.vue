@@ -1,27 +1,29 @@
 <template>
-  <p> This is the Trips page</p>
+  <div>
+    <p>This is the Trips page</p>
 
-  <!-- Only render this table if there is trip data-->
-  <div v-if="tripData.length > 0">
-    <table>
-      <tr>
-        <th>Destination</th>
-        <th>Days</th>
-        <th>Price</th>
-        <th>Book / UnBook</th>
-      </tr>
-      <tr v-for="(trip, rowNum) in tripData" :key="trip.id">
-        <td>{{ trip.destination }}</td>
-        <td>{{ trip.duration }}</td>
-        <td>{{ trip.price }}</td>
-        <td>
-          <button @click="bookTrip(trip)">Book</button>
-        </td>
-      </tr>
-    </table>
+    <!-- Only render this table if there is trip data-->
+    <div v-if="tripData.length > 0">
+      <table>
+        <tr>
+          <th>Destination</th>
+          <th>Days</th>
+          <th>Price</th>
+          <th>Book / UnBook</th>
+        </tr>
+        <tr v-for="(trip, rowNum) in tripData" :key="trip.id">
+          <td>{{ trip.destination }}</td>
+          <td>{{ trip.duration }}</td>
+          <td>{{ trip.price }}</td>
+          <td>
+            <button @click="bookTrip(trip)">Book</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <p>The number of results is {{ tripData.length }}</p>
   </div>
-  <br>
-  <p>The number of results is {{ tripData.length }}</p>
 </template>
 
 <script setup>
@@ -34,9 +36,13 @@ const bookedTrips = ref([]);
 const router = useRouter();
 
 function bookTrip(trip) {
-  bookedTrips.value = [...bookedTrips.value, trip];
+  const isBooked = bookedTrips.value.some((bookedTrip) => bookedTrip.destination === trip.destination);
 
-  router.push({ name: 'BookedTrips', query: { trips: JSON.stringify(bookedTrips.value) } });
+  if (!isBooked) {
+    bookedTrips.value.push(trip);
+
+    router.push({ name: 'BookedTrips', query: { trips: JSON.stringify(bookedTrips.value) } });
+  }
 }
 
 onMounted(async () => {
@@ -44,12 +50,15 @@ onMounted(async () => {
 
   const allTripsURL = 'http://localhost:3000/trips';
 
-  const tripAPI = await axios.get(allTripsURL);
-
-  if (tripAPI.status === 200) {
+  try {
+    const tripAPI = await axios.get(allTripsURL);
     tripData.value = tripAPI.data;
+  } catch (error) {
+    console.error('Error fetching trips:', error);
   }
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+/* Add your scoped styles here */
+</style>

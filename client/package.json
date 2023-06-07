@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "axios": "^1.4.0",
+    "firebase": "^9.22.1",
+    "google-sign-in": "^3.0.4",
     "pinia": "^2.0.32",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
