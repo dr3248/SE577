@@ -68,8 +68,6 @@ export default {
 
       alert('Registration successful');
       toggleRegisterForm();
-      // Redirect to homepage.vue
-      // router.push('/homepage');
     };
 
     const toggleRegisterForm = () => {
