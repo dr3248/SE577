@@ -1,25 +1,27 @@
 # SE577
 
-SERVER: You need to do these inside the server folder:
+**SERVER:** <br />
+You need to do these inside the server folder:  <br />
 
-For initialization and the dependencies, run the following commands.
-npm init
+For initialization and the dependencies, run the following commands. <br />
+npm init <br />
 
-npm install express
-npm install cors
-npm install firebase
+npm install express <br />
+npm install cors <br />
+npm install firebase <br />
 
-Then run the app with the following command:
-nodemon ./app.js
+Then run the app with the following command: <br />
+nodemon ./app.js <br />
 
-CLIENT: In a new terminal, go the client directory and type the following commands to run the Front End:
+**CLIENT:** <br />
+In a new terminal, go the client directory and type the following commands to run the Front End: <br />
 
-yarn
-yarn dev
+yarn <br />
+yarn dev <br />
 
-FRONT END:
+**FRONT END:** <br />
 
-With this, the webpage should load. 
+With this, the webpage should load. <br />
 
 The Weather tab can be used to navigate to the Weather page. Type in the name of any place (like Paris, London, Asia etc.) and it should show the temperature and weather conditions for that place, using the OpenWeatherMap API.
 If a random/garbage value is entered, it would display an error message.
@@ -28,9 +30,9 @@ The Search Page and the BookedTrips page use the data from the Trips page, which
 
 The AboutUser page contains displays about the user, which is fetched from the google account using Firebase Auth, after clicling on sign in.
 
-The login page has the login/ register form. It can be used to validate and authorize users, but does not store any session, and stores its data in the local storage. It has a basic functionality, and users must register before login.
+The login page has the login/ register form. It can be used to validate and authorize users, but does not store any session, and stores its data in the local storage. It has a basic functionality, and users must register before login. <br />
 
-Architecture:  
+**Architecture:**  <br />
 
 <!-- ![del4-diagram](https://github.com/dr3248/SE577/assets/55326813/cf5dc9c0-f358-48d8-ba30-f34030e93013)
  -->
